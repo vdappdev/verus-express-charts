@@ -34,7 +34,7 @@ async function callRPC(method, params = []) {
         });
         return response.data.result || { error: response.data.error };
     } catch (error) {
-        console.error(colors.red(`Error calling RPC method ${method}:`), error.message);
+        console.error((`Error calling RPC method ${method}:`), error.message);
         return { error: error.message };
     }
 };
