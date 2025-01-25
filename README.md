@@ -1,15 +1,28 @@
 # verus-express
 For learning 
 
-# Instructions
+## Prerequisites
+- **Node.js**: Tested with **v18.20.2**.
+- **Yarn**: Required for installing modules (Verus libraries rely on Yarn).
 
-# Tested using node v18.20.2
+- ## Installation Instructions
 
-# Install v18.20.2 & yarn, yarn is used for the install of modules ( verus libs use yarn )
+1. **Install Dependencies**:
+   - Ensure Node.js (v18.20.2) and Yarn are installed on your system.
 
-# After you insure the above are installed, clone the repo
-# cd into the verus-express folder and run: yarn install
-# This will install everything in the package.json inluding nodemon
-# nodemon is a development package so to not have to close the app and restart
-# to start the app run: npm run dev ( to use nodemon, when developing ) or node server.js ( would use this for a production case )
+2. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/paco-darthvadr/verus-express
+   cd verus-express
+   yarn install
+
+3. **Running the Application**:
+   Development Mode
+   To run the app with nodemon for easier development (automatic restarts):
+   npm run dev
+
+   Production Mode
+   For a production scenario, run the app using:
+   node server.js
+   
  
