@@ -24,7 +24,6 @@ For learning
 
    Production Mode
    For a production scenario, run the app using:
-   ```bash
    node server.js
    
  
