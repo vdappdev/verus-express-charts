@@ -19,10 +19,12 @@ For learning
 3. **Running the Application**:
    Development Mode
    To run the app with nodemon for easier development (automatic restarts):
+   ```bash
    npm run dev
 
    Production Mode
    For a production scenario, run the app using:
+   ```bash
    node server.js
    
  
