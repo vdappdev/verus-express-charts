@@ -1,5 +1,5 @@
 # verus-express
-For learning 
+For learning express server, getcurrencystate rpc, and tradingview lightweight charts
 
 ## Prerequisites
 - **Node.js**: Tested with **v18.20.2**.

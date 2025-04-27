@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verus Blockchain Charts</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="control-panel">
+            <div class="control-group">
+                <label for="basketCurrency">Basket Currency:</label>
+                <select id="basketCurrency">
+                    <option value="Bridge.vETH">Bridge.vETH</option>
+                    <option value="Pure">Pure</option>
+                </select>
+            </div>            
+            
+            <div class="control-group">
+                <label for="convertTo">Numerator:</label>
+                <select id="convertTo">
+                    <!-- Will be populated dynamically based on basket selection -->
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="currency">Denominator:</label>
+                <select id="currency">
+                    <!-- Will be populated dynamically based on basket selection -->
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="volumeCurrency">Volume Currency:</label>
+                <select id="volumeCurrency">
+                    <!-- Will be populated with same options as Currency/Convert To -->
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="interval">Interval:</label>
+                <select id="interval">
+                    <option value="1440">1 Day (1440 blocks)</option>
+                    <option value="10080">1 Week (10080 blocks)</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <span class="block-height-label">Current Block Height:</span>
+                <span id="currentBlockHeight">Loading...</span>
+            </div>
+
+            <button id="updateChart" class="update-button">Update Chart</button>
+        </div>
+
+        <div class="chart-container">
+            <div id="chart" style="width: 100%; height: 500px;"></div>
+        </div>
+
+        <div class="attribution">
+            Powered by <a href="https://www.tradingview.com" target="_blank" rel="noopener">TradingView</a>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

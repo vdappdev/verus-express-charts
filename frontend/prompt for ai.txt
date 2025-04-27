@@ -1,0 +1,38 @@
+I'm working on a Verus blockchain charting project that displays trading pair data using TradingView's Lightweight Charts library. Current status:
+
+Working features:
+- Frontend HTML/JavaScript setup (port 5273)
+- Express backend (port 5500)
+- API endpoints working correctly
+- UI controls working:
+  - Basket currency selection (Pure, Bridge.vETH)
+  - Currency pair selection (numerator/denominator)
+  - Interval selection (1440, 10080 blocks)
+  - Volume currency selection
+- Data fetching and transformation working correctly
+
+Current Problem:
+The API is returning correct OHLCV data for trading pairs (confirmed via console logs), but the chart isn't rendering. Specifically:
+- Data transformation is successful (verified in console)
+- No console errors
+- Chart container exists but remains empty
+- Using TradingView Lightweight Charts library via CDN:
+  `https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js`
+- Data format matches TradingView requirements:
+  ```javascript
+  {
+    time: blockHeight,
+    open: value,
+    high: value,
+    low: value,
+    close: value,
+    volume: value
+  }
+Latest console output shows successful data transformation with 55 valid OHLCV data points, but no visual rendering.
+
+Relevant code files:
+
+index.html (chart container and UI)
+app.js (chart initialization and data handling)
+styles.css (if needed)
+Need help debugging why the chart isn't rendering despite having valid data and proper initialization.

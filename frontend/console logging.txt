@@ -1,0 +1,27 @@
+This sounds like a data consistency/transformation issue since some pairs work and others don't. Let's debug this systematically:
+
+For the non-working pairs (like tbtc.veth/vrsc):
+
+Can you log the exact data structure before it's passed to the chart?
+Are there any null/undefined values in the OHLCV data?
+Are the values extremely small or large (might need scaling)?
+Are there gaps in the data that might affect rendering?
+
+For bridge.veth pairs not returning data:
+
+Is the API endpoint returning different data structures for different currency types?
+Could there be case sensitivity issues in the currency names?
+Are there any specific conditions in your backend that might filter out or transform bridge.veth data differently?
+
+For pairs that work (vrsc/tbtc.veth, vrsc/pure):
+
+What's unique about their data structure?
+Are the numerical values in a different range?
+Is the data more consistent/complete?
+
+Could you share:
+
+A console.log of a working pair's data
+A console.log of a non-working pair's data
+The API response for a bridge.veth pair
+This would help identify patterns in what makes some pairs work while others don't.

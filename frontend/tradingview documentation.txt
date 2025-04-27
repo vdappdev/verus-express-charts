@@ -1,0 +1,181 @@
+source:  https://tradingview.github.io/lightweight-charts/docs
+
+
+Creating a chart
+As a first step, import the library to your file:
+
+import { createChart } from 'lightweight-charts';
+
+To create a chart, use the createChart function. You can call the function multiple times to create as many charts as needed:
+
+import { createChart } from 'lightweight-charts';
+
+// ...
+const firstChart = createChart(document.getElementById('firstContainer'));
+const secondChart = createChart(document.getElementById('secondContainer'));
+
+
+As a result, createChart returns an IChartApi object that allows you to interact with the created chart.
+
+Creating a series
+When the chart is created, you can display data on it.
+
+The basic primitive to display data is a series. The library supports the following series types:
+
+Area
+Bar
+Baseline
+Candlestick
+Histogram
+Line
+To create a series, use the addSeries method from IChartApi. As a parameter, specify a series type you would like to create:
+
+import { AreaSeries, BarSeries, BaselineSeries, createChart } from 'lightweight-charts';
+
+const chart = createChart(container);
+
+const areaSeries = chart.addSeries(AreaSeries);
+const barSeries = chart.addSeries(BarSeries);
+const baselineSeries = chart.addSeries(BaselineSeries);
+// ...
+
+
+Note that a series cannot be transferred from one type to another one, since different series types require different data and options types.
+
+Setting and updating a data
+When the series is created, you can populate it with data. Note that the API calls remain the same regardless of the series type, although the data format may vary.
+
+Setting the data to a series
+To set the data to a series, you should call the ISeriesApi.setData method:
+
+const chartOptions = { layout: { textColor: 'black', background: { type: 'solid', color: 'white' } } };
+const chart = createChart(document.getElementById('container'), chartOptions);
+const areaSeries = chart.addSeries(AreaSeries, {
+    lineColor: '#2962FF', topColor: '#2962FF',
+    bottomColor: 'rgba(41, 98, 255, 0.28)',
+});
+areaSeries.setData([
+    { time: '2018-12-22', value: 32.51 },
+    { time: '2018-12-23', value: 31.11 },
+    { time: '2018-12-24', value: 27.02 },
+    { time: '2018-12-25', value: 27.32 },
+    { time: '2018-12-26', value: 25.17 },
+    { time: '2018-12-27', value: 28.89 },
+    { time: '2018-12-28', value: 25.46 },
+    { time: '2018-12-29', value: 23.92 },
+    { time: '2018-12-30', value: 22.68 },
+    { time: '2018-12-31', value: 22.67 },
+]);
+
+const candlestickSeries = chart.addSeries(CandlestickSeries, {
+    upColor: '#26a69a', downColor: '#ef5350', borderVisible: false,
+    wickUpColor: '#26a69a', wickDownColor: '#ef5350',
+});
+candlestickSeries.setData([
+    { time: '2018-12-22', open: 75.16, high: 82.84, low: 36.16, close: 45.72 },
+    { time: '2018-12-23', open: 45.12, high: 53.90, low: 45.12, close: 48.09 },
+    { time: '2018-12-24', open: 60.71, high: 60.71, low: 53.39, close: 59.29 },
+    { time: '2018-12-25', open: 68.26, high: 68.26, low: 59.04, close: 60.50 },
+    { time: '2018-12-26', open: 67.71, high: 105.85, low: 66.67, close: 91.04 },
+    { time: '2018-12-27', open: 91.04, high: 121.40, low: 82.70, close: 111.40 },
+    { time: '2018-12-28', open: 111.51, high: 142.83, low: 103.34, close: 131.25 },
+    { time: '2018-12-29', open: 131.33, high: 151.17, low: 77.68, close: 96.43 },
+    { time: '2018-12-30', open: 106.33, high: 110.20, low: 90.39, close: 98.10 },
+    { time: '2018-12-31', open: 109.87, high: 114.69, low: 85.66, close: 111.26 },
+]);
+
+chart.timeScale().fitContent();
+
+
+Series:
+
+Candlestick
+Series Definition: CandlestickSeries
+Data format: CandlestickData or WhitespaceData
+Style options: a mix of SeriesOptionsCommon and CandlestickStyleOptions
+This series illustrates price movements with candlesticks. The solid body of each candlestick represents the open and close values for the time period. Vertical lines, known as wicks, above and below the candle body represent the high and low values, respectively:
+
+const chartOptions = { layout: { textColor: 'black', background: { type: 'solid', color: 'white' } } };
+const chart = createChart(document.getElementById('container'), chartOptions);
+const candlestickSeries = chart.addSeries(CandlestickSeries, { upColor: '#26a69a', downColor: '#ef5350', borderVisible: false, wickUpColor: '#26a69a', wickDownColor: '#ef5350' });
+
+const data = [{ open: 10, high: 10.63, low: 9.49, close: 9.55, time: 1642427876 }, { open: 9.55, high: 10.30, low: 9.42, close: 9.94, time: 1642514276 }, { open: 9.94, high: 10.17, low: 9.92, close: 9.78, time: 1642600676 }, { open: 9.78, high: 10.59, low: 9.18, close: 9.51, time: 1642687076 }, { open: 9.51, high: 10.46, low: 9.10, close: 10.17, time: 1642773476 }, { open: 10.17, high: 10.96, low: 10.16, close: 10.47, time: 1642859876 }, { open: 10.47, high: 11.39, low: 10.40, close: 10.81, time: 1642946276 }, { open: 10.81, high: 11.60, low: 10.30, close: 10.75, time: 1643032676 }, { open: 10.75, high: 11.60, low: 10.49, close: 10.93, time: 1643119076 }, { open: 10.93, high: 11.53, low: 10.76, close: 10.96, time: 1643205476 }];
+
+candlestickSeries.setData(data);
+
+chart.timeScale().fitContent();
+
+
+
+Chart Types:
+Lightweight Charts offers different types of charts to suit various data visualization needs. This article provides an overview of the available chart types and how to create them.
+
+Custom Horizontal Scale Chart
+For advanced use cases, Lightweight Charts allows creating charts with custom horizontal scale behavior.
+
+Creation method: createChartEx
+Horizontal scale: Custom-defined
+Use case: Specialized charting needs with non-standard horizontal scales
+import { createChartEx, defaultHorzScaleBehavior } from 'lightweight-charts';
+
+const customBehavior = new (defaultHorzScaleBehavior())();
+// Customize the behavior as needed
+
+const chart = createChartEx(document.getElementById('container'), customBehavior, options);
+
+
+This method provides the flexibility to define custom horizontal scale behavior, allowing for unique and specialized chart types.
+
+
+
+
+
+
+Time scale
+Overview
+Time scale (or time axis) is a horizontal scale that displays the time of data points at the bottom of the chart.
+
+Time scale
+
+To adjust the time scale appearance, use either the ITimeScaleApi.applyOptions or IChartApi.applyOptions method. Both methods produce the same result. Refer to TimeScaleOptions for a list of available options.
+
+You can call the IChartApi.timeScale method to manage the scale. This method returns an instance of the ITimeScaleApi interface that provides an extensive API for controlling the time scale. For example, you can adjust the visible range, convert a time point or index to a coordinate, and subscribe to events.
+
+Logical range
+The time scale can be measured with both a time range and a logical range. The logical range is illustrated below with red vertical lines between bars. Each line represents a logical index on the scale.
+
+Logical range
+
+The logical range starts from the first data point across all series, with negative indices before it and positive ones after.
+
+The indices can have fractional parts. The integer part represents the fully visible bar, while the fractional part indicates partial visibility. For example, the 5.2 index means that the fifth bar is fully visible, while the sixth bar is 20% visible. A half-index, such as 3.5, represents the middle of the bar.
+
+In the library, the logical range is represented with a LogicalRange object. This object has the from and to properties, which are logical indices on the time scale. For example, the visible logical range on the chart above is approximately from -4.73 to 5.05.
+
+You can manage the logical range with ITimeScaleApi as described in the overview.
+
+Chart margin
+Margin is the space between the chart's borders and the series. It depends on the following time scale options:
+
+barSpacing. The default value is 6.
+rightOffset. The default value is 0.
+You can specify these options as described in Overview.
+
+Note that if a series contains only a few data points, the chart may have a large margin on the left side.
+
+A series with a few points
+
+In this case, you can call the fitContent method that adjust the view and fits all data within the chart.
+
+chart.timeScale().fitContent();
+
+If calling fitContent has no effect, it might be due to how the library displays data.
+
+The library allocates specific width for each data point to maintain consistency between different chart types. For example, for line series, the plot point is placed at the center of this allocated space, while candlestick series use most of the width for the candle body. The allocated space for each data point is proportional to the chart width. As a result, series with fewer data points may have a small margin on both sides.
+
+Margin
+
+You can specify the logical range with the setVisibleLogicalRange method to display the series exactly to the edges. For example, the code sample below adjusts the range by half a bar-width on both sides.
+
+const vr = chart.timeScale().getVisibleLogicalRange();
+chart.timeScale().setVisibleLogicalRange({ from: vr.from + 0.5, to: vr.to - 0.5 });

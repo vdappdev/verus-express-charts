@@ -1,0 +1,34 @@
+npm install --legacy-peer-deps
+npm WARN skipping integrity check for git dependency ssh://git@github.com/VerusCoin/BitGoJS.git
+npm WARN cleanup Failed to remove some directories [
+npm WARN cleanup   [
+npm WARN cleanup     'C:\\Users\\crypt\\Documents\\GitHub\\verus-express-html-charts\\backend\\node_modules\\verus-typescript-primitives',
+npm WARN cleanup     [Error: EPERM: operation not permitted, rmdir 'C:\Users\crypt\Documents\GitHub\verus-express-html-charts\backend\node_modules\verus-typescript-primitives'] {
+npm WARN cleanup       errno: -4048,
+npm WARN cleanup       code: 'EPERM',
+npm WARN cleanup       syscall: 'rmdir',
+npm WARN cleanup       path: 'C:\\Users\\crypt\\Documents\\GitHub\\verus-express-html-charts\\backend\\node_modules\\verus-typescript-primitives'
+npm WARN cleanup     }
+npm WARN cleanup   ]
+npm WARN cleanup ]
+npm ERR! code 1
+npm ERR! git dep preparation failed
+npm ERR! command C:\nvm4w\nodejs\node.exe C:\Users\crypt\AppData\Roaming\nvm\v18.20.2\node_modules\npm\bin\npm-cli.js install --force --cache=C:\Users\crypt\AppData\Local\npm-cache --prefer-offline=false --prefer-online=false --offline=false --no-progress --no-save --no-audit --include=dev --include=peer --include=optional --no-package-lock-only --no-dry-run
+npm ERR! npm WARN using --force Recommended protections disabled.
+npm ERR! npm ERR! code 1
+npm ERR! npm ERR! git dep preparation failed
+npm ERR! npm ERR! command C:\nvm4w\nodejs\node.exe C:\Users\crypt\AppData\Roaming\nvm\v18.20.2\node_modules\npm\bin\npm-cli.js install --force --cache=C:\Users\crypt\AppData\Local\npm-cache --prefer-offline=false --prefer-online=false --offline=false --no-progress --no-save --no-audit --include=dev --include=peer --include=optional --no-package-lock-only --no-dry-run
+npm ERR! npm ERR! npm WARN using --force Recommended protections disabled.
+npm ERR! npm ERR! npm ERR! code E404
+npm ERR! npm ERR! npm ERR! 404 Not Found - GET https://github.com/BitGo/supertest-as-promised/archive/a7f4b612b9fa090ae33a9616c41862aec2b25c7e.tar.gz
+npm ERR! npm ERR! npm ERR! 404
+npm ERR! npm ERR! npm ERR! 404  'supertest-as-promised@https://github.com/BitGo/supertest-as-promised/archive/a7f4b612b9fa090ae33a9616c41862aec2b25c7e.tar.gz' is not in this registry.
+npm ERR! npm ERR! npm ERR! 404
+npm ERR! npm ERR! npm ERR! 404 Note that you can also install from a
+npm ERR! npm ERR! npm ERR! 404 tarball, folder, http url, or git url.
+npm ERR! npm ERR!
+npm ERR! npm ERR! npm ERR! A complete log of this run can be found in: C:\Users\crypt\AppData\Local\npm-cache\_logs\2025-04-15T20_24_46_917Z-debug-0.log
+npm ERR!
+npm ERR! npm ERR! A complete log of this run can be found in: C:\Users\crypt\AppData\Local\npm-cache\_logs\2025-04-15T20_24_41_055Z-debug-0.log
+
+npm ERR! A complete log of this run can be found in: C:\Users\crypt\AppData\Local\npm-cache\_logs\2025-04-15T20_22_55_231Z-debug-0.log
